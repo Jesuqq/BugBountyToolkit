@@ -12,7 +12,7 @@ RUN mkdir ~/toolkit && \
 
 # tzdata
 
-RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
+RUN ln -fs /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y tzdata && \
@@ -40,7 +40,9 @@ RUN apt-get update && \
     apt-get install -y perl && \
     apt-get install -y nikto && \
     apt-get install -y dnsutils && \
-    apt-get install -y net-tools 
+    apt-get install -y net-tools && \
+    apt-get install -y tmux && \
+    apt-get install -y smbclient
 
 
 # sqlmap
@@ -183,8 +185,8 @@ RUN cd /opt && \
     export GOPATH=$HOME/go && \
     export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+# gobuster
+RUN go get github.com/OJ/gobuster
 
-
-
-
-
+# enum4linux
+RUN git clone https://github.com/portcullislabs/enum4linux.git
