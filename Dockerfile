@@ -180,10 +180,11 @@ RUN cd ~/toolkit && \
 RUN cd /opt && \
     wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz && \
     tar -xvf go1.13.3.linux-amd64.tar.gz && \
-    mv go /usr/local && \
-    export GOROOT=/usr/local/go && \
-    export GOPATH=$HOME/go && \
-    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+    mv go /usr/local
+
+ENV GOROOT=/usr/local/go
+ENV GOPATH=$HOME/go
+ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # gobuster
 RUN go get github.com/OJ/gobuster
